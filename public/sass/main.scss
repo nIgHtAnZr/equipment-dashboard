@@ -1,0 +1,12 @@
+$font-stack: "Roboto", "Helvetica", "Arial", "sans-serif";
+$main-font-size: 12px;
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: $font-stack;
+  font-size: $main-font-size;
+}
+
+@import 'pageNotFound';
+@import 'footer';

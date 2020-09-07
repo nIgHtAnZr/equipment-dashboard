@@ -1,0 +1,13 @@
+$authentication-font-color:#888888;
+
+.page-not-found {
+  color: $authentication-font-color;
+
+  .code {
+    font-size: 250px;
+  }
+
+  .text {
+    font-size: 50px;
+  }
+}

@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+  font-size: 12px;
+}
+
+.page-not-found {
+  color: #888888;
+}
+.page-not-found .code {
+  font-size: 250px;
+}
+.page-not-found .text {
+  font-size: 50px;
+}
+
+.sticky-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */
