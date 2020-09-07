@@ -3,6 +3,11 @@ import { getAxiosInstance } from './config/axiosSettings';
 const API_KEY       = process.env.REACT_APP_API_KEY;
 const axiosInstance = getAxiosInstance();
 
+/**
+ * Get data from a specific api in recursive way untill a empty array recieves.
+ *
+ * @param {string} url 
+ */
 export const get = (url) => {
   const requestUrl = `${url}&apikey=${API_KEY}`;
 

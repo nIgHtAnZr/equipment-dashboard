@@ -13,6 +13,8 @@ import DoughnutPieChart from '../../components/dashboard/Charts/DoughnutPieChart
 import RowCard from '../../components/dashboard/Cards/RowCard';
 import { groupArrayByKey } from '../../utils/SystemManager';
 import configs from '../../config/configs';
+import LoadingSpinner from '../../components/Loader/LoadingSpinner';
+import NoEquipments from '../../components/errorPages/NoEquipments';
 
 const MAX_ITEM_PER_REQUEST = configs.maximumItemPerRequest;
 
@@ -65,6 +67,10 @@ const ChartView = () => {
   }
 
   const renderChartViews = () => {
+    if (!equipmentData.length) {
+      return <NoEquipments/>;
+    }
+
     return (
       <div className="row">
         <div className="col-xl-8 col-lg-8">
@@ -113,9 +119,7 @@ const ChartView = () => {
       <div className="d-flex justify-content-center">
         {
           equipmentDataForChartLoading ?
-            <div className="spinner-border" role="status">
-              <span className="sr-only">Loading...</span>
-            </div> :
+            <LoadingSpinner/> :
             renderChartViews()
         }
       </div>

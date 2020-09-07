@@ -4,11 +4,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import Routes from './routes/routes';
 import { store, persistor } from './redux/store';
+import LoadingSpinner from './components/Loader/LoadingSpinner';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <PersistGate loading={<div>loading...</div>} persistor={persistor}>
+      <PersistGate loading={<LoadingSpinner/>} persistor={persistor}>
         <Routes />
       </PersistGate>
     </Provider>

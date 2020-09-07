@@ -5,14 +5,14 @@ import configs from '../../../config/configs';
 import { groupArrayByKey } from '../../../utils/SystemManager';
 
 const BarChart = ({ chartData, stackedByKey, groupByKey }) => {
-  const [labels, setLabels] = useState([]);
+  const [labels, setLabels]     = useState([]);
   const [datasets, setDataSets] = useState([]);
 
   const { operationalStatus } = configs.colorCode;
 
   useEffect(() => {
     if (chartData.length && stackedByKey && groupByKey && operationalStatus) {
-      const lineChartData = groupArrayByKey(chartData, groupByKey);
+      const lineChartData         = groupArrayByKey(chartData, groupByKey);
       const operationalStatusData = groupArrayByKey(chartData, stackedByKey);
 
       setLabels(lineChartData ? Object.keys(lineChartData) : []);
