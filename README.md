@@ -1,6 +1,6 @@
 # Equipment Dashboard
 
-Simple overview of use/purpose.
+Dashboard with optimal and elegant UI.
 
 ## Description
 
@@ -27,13 +27,14 @@ equipment in an organization. Equipment data is accessible via an api.
 ### Executing program
 
 * First need to install all the node modules.
-* And then you can start the app and view in on your browser
 ```
 npm install
 ```
 ```
 npm start
 ```
+Then open http://localhost:8080/ in  browser.
+
 ## Help
 
 Any unathourize issues occured. please check the **API_KEY** and restart the app
