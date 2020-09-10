@@ -5,28 +5,43 @@ const axiosInstance = getAxiosInstance();
 
 /**
  * Get data from a specific api in recursive way untill a empty array recieves.
+ * API call will be sent in 100ms time gap.
  *
- * @param {string} url 
+ * @param {string} url
  */
 export const get = (url) => {
   const requestUrl = `${url}&apikey=${API_KEY}`;
 
   const request = axiosInstance.get(requestUrl)
+    .then((response) => {
+      return response.status === 200 && response.data.length
+        ? secureDelay(3000, response)
+        : response;
+    })
     .then(response => {
       if(response.status === 200 && !response.data.length) {
         return response.data;
       } else if (response.status === 200 && response.data.length) {
         const [lastItem] = response.data.slice(-1);
 
-        return get(`${url.split('&')[0]}&last=${lastItem['__rowid__']}`)
-          .then((newResponse) => {
-            return response.data.concat(newResponse);
-          });
+        return get(
+          `${url.split("&")[0]}&last=${lastItem["__rowid__"]}`
+        ).then((newResponse) => response.data.concat(newResponse));
       } else {
         return Promise.reject(response.data);
       }
     })
-    .catch(error => (error));
+    .catch((error) => error);
 
   return request;
 };
+
+/**
+ * Delaying by setting timeout
+ *
+ * @param {int} timeInMilliSeconds
+ * @param {object} responseData
+ */
+const secureDelay = (timeInMilliSeconds, responseData) => {
+  return new Promise(resolve => setTimeout(resolve, timeInMilliSeconds, responseData));
+}
