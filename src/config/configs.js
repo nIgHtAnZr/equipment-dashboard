@@ -11,6 +11,7 @@ const configs = {
     ],
   },
   maximumItemPerRequest: 99,
+  requestDelayTimeInMs: 100,
 }
 
 export default configs;
