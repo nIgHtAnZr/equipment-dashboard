@@ -1,7 +1,9 @@
 import { getAxiosInstance } from './config/axiosSettings';
+import configs from '../config/configs';
 
-const API_KEY       = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 const axiosInstance = getAxiosInstance();
+const delayTime = configs.requestDelayTimeInMs;
 
 /**
  * Get data from a specific api in recursive way untill a empty array recieves.
@@ -15,7 +17,7 @@ export const get = (url) => {
   const request = axiosInstance.get(requestUrl)
     .then((response) => {
       return response.status === 200 && response.data.length
-        ? secureDelay(3000, response)
+        ? secureDelay(delayTime, response)
         : response;
     })
     .then(response => {
@@ -43,5 +45,7 @@ export const get = (url) => {
  * @param {object} responseData
  */
 const secureDelay = (timeInMilliSeconds, responseData) => {
-  return new Promise(resolve => setTimeout(resolve, timeInMilliSeconds, responseData));
-}
+  return new Promise((resolve) =>
+    setTimeout(resolve, timeInMilliSeconds, responseData)
+  );
+};
